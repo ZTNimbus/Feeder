@@ -12,7 +12,7 @@ import { router as authRouter } from "./routes/authRoutes.js";
 import connectToMongoDB from "./services/connectToMongoDB.js";
 
 import dotenv from "dotenv";
-dotenv.config();
+if (process.env.NODE_ENV !== "production") dotenv.config(); //Ensures that variables in .env are only applied during development. //Prod. will use env variables set in host website.
 
 const app = express();
 const PORT = process.env.PORT || 3000;
