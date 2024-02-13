@@ -37,6 +37,7 @@ passport.use(
       clientID: googleClientID,
       clientSecret: googleClientSecret,
       callbackURL: "/auth/google/callback",
+      proxy: true, //Will override requests sent by "proxy/load balancers" with "http" with the original. Will fix redirect uri mismatch error.
     },
     async (accessToken, refreshToken, profile, done) => {
       let userInDB = await User.findOne({ googleID: profile.id }); //ASYNC!!!
