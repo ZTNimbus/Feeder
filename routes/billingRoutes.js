@@ -1,5 +1,5 @@
 import express from "express";
-import Stripe from "stripe";
+import stripe from "stripe";
 
 import requireLogin from "../middlewares/requireLogin.js";
 
