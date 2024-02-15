@@ -43,7 +43,9 @@ if (mode === "production") {
 
   //All other uncaught endpoints
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+    res.sendFile(
+      path.resolve(path.dirname(__filename), "client", "dist", "index.html")
+    );
   });
 }
 
