@@ -39,7 +39,7 @@ app.use(billingRouter);
 
 if (mode === "production") {
   //If looking for a specific file
-  app.use(express.static("/client/dist/assets"));
+  app.use(express.static("/client/dist"));
 
   //All other uncaught endpoints
   app.get("*", (req, res) => {
