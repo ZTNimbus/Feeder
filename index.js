@@ -15,6 +15,7 @@ import connectToMongoDB from "./services/connectToMongoDB.js";
 
 import path from "path";
 import dotenv from "dotenv";
+
 const mode = process.env.NODE_ENV;
 if (mode !== "production") dotenv.config(); //Ensures that variables in .env are only applied during development. //Prod. will use env variables set in host website.
 
@@ -38,12 +39,13 @@ app.use(authRouter);
 app.use(billingRouter);
 
 if (mode === "production") {
+  const staticPath = path.resolve(process.cwd(), "client", "dist");
   //If looking for a specific file
-  app.use(express.static("/client/dist"));
+  app.use(express.static(staticPath));
 
   //All other uncaught endpoints
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(process.cwd(), "client", "dist", "index.html"));
+    res.sendFile(path.resolve(staticPath, "index.html"));
   });
 }
 
