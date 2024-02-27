@@ -2,6 +2,7 @@
 import express from "express";
 
 import "./models/User.js"; //to have everything inside executed, should run first in order to create/update the model
+import "./models/Survey.js";
 import "./services/passport.js"; //to have everything inside executed, should run after Users.js due to the logic inside
 
 import passport from "passport";
@@ -9,6 +10,7 @@ import cookieSession from "cookie-session";
 
 import { router as authRouter } from "./routes/authRoutes.js";
 import { router as billingRouter } from "./routes/billingRoutes.js";
+import { router as surveyRouter } from "./routes/surveyRoutes.js";
 
 import mongoose from "mongoose";
 import connectToMongoDB from "./services/connectToMongoDB.js";
@@ -37,6 +39,7 @@ connectToMongoDB(mongoose);
 
 app.use(authRouter);
 app.use(billingRouter);
+app.use(surveyRouter);
 
 if (mode === "production") {
   const staticPath = path.resolve(process.cwd(), "client", "dist");

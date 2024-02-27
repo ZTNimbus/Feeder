@@ -30,6 +30,12 @@ export default defineConfig({
         // changeOrigin: true, don't set this because it breaks redirects
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+
+      "/api/surveys": {
+        target: "http://localhost:3000",
+        // changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/surveys/, "/api/surveys"),
+      },
     },
   },
 });

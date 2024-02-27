@@ -2,22 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Landing from "./components/Landing";
+import Dashboard from "./components/Dashboard";
+import SurveyNew from "./components/SurveyNew";
 
 import { dispatchFetchUser } from "./actions";
 import { useEffect } from "react";
 
-function Dashboard() {
-  return <h2>Dashboard</h2>;
-}
-
-function SurveyNew() {
-  return <h2>SURVEY NEW</h2>;
-}
-
 function App() {
   useEffect(() => {
     const fetch = async () => dispatchFetchUser();
-
     fetch();
   }, []);
 
